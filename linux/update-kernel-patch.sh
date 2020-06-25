@@ -83,6 +83,7 @@ update_kernel_patch() {
 #update_kernel_patch 4.18.9-bone9 4.18.9 0001-rcn-linux-4.18.9-bone9.patch
 #update_kernel_patch 4.19.10-bone14 4.19.10 0001-rcn-linux-4.19.10-bone14.patch
 #update_kernel_patch 4.19.72-bone40 4.19.72 0001-rcn-linux-4.19.72-bone40.patch
-update_kernel_patch 4.19.103-bone48 4.19.103 0001-rcn-linux-4.19.103-bone48.patch
+#update_kernel_patch 4.19.103-bone48 4.19.103 0001-rcn-linux-4.19.103-bone48.patch
+update_kernel_patch 4.19.94-ti-r44 4.19.94 0001-rcn-linux-4.19.94-ti-r44.patch
 
 echo "Updated patches. Now rebuild the linux kernel."
