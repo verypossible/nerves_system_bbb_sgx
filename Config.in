@@ -1,3 +1,7 @@
 # Add project-specific packages for Buildroot here
 
+source "$NERVES_DEFCONFIG_DIR/package/bb-kf5-extra-cmake-modules/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/bb-libglfw/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/bb-ti-sgx-um/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/bb-weston/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/extra-dts/Config.in"
