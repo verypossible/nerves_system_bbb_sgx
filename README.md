@@ -321,3 +321,34 @@ to your Mix Application configuration:
 config :nerves, :firmware,
   provisioning: "project/relative/path/to/provisioning.conf"
 ```
+
+## Graphics accelerator
+
+To use the graphics accelerator, you will need to load the kernel module and
+start the user space driver.
+
+```text
+modprobe pvrsrvkm
+pvrsrvctl --start --no-module
+```
+
+You should see the following output in dmesg if it was successful:
+
+```text
+[   54.414283] pvrsrvkm: loading out-of-tree module taints kernel.
+[   55.144270] [drm] Initialized pvr 1.17.4948957 20110701 for 56000000.sgx on minor 0
+[   56.143876] PVR_K: UM DDK-(4948957) and KM DDK-(4948957) match. [ OK ]
+```
+
+## Using Weston
+
+Once the graphics accelerator has been started, weston can be launched using the
+drm-backend. Weston requires that the variable `XDG_RUNTIME_DIR` be set to a
+directory with 0700 permissions. Weston uses this path to store temporary files.
+Weston can be configured by creating a `weston.ini` file. See [weaton.ini.in](https://gitlab.freedesktop.org/wayland/weston/-/blob/master/weston.ini.in) for more info.
+
+You can start weston by running the following
+
+```text
+weston --tty=1 --config=/path/to/weston.ini
+```
