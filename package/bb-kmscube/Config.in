@@ -1,0 +1,7 @@
+config BR2_PACKAGE_BB_KMSCUBE
+	bool "kmscube"
+	depends on BR2_PACKAGE_BB_TI_SGX_UM
+	help
+	  kmscube is an application to test kms/drm drivers.
+
+	  git://git.ti.com/glsdk/kmscube.git
