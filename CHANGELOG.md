@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.7.1
+
+* Updated dependencies
+  * [nerves_system_br v1.12.3](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.12.3)
+  * [Erlang/OTP 23.0.3](https://erlang.org/download/OTP-23.0.3.README)
+
 ## v2.7.0
 
 This release updates the system to use Buildroot 2020.05 and Erlang/OTP 23.
