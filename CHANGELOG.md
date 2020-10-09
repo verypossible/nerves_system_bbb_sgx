@@ -1,5 +1,28 @@
 # Changelog
 
+
+# Changelog
+
+## v2.8.0
+
+This release updates to [Buildroot
+2020.08](http://lists.busybox.net/pipermail/buildroot/2020-September/290797.html) and OTP 23.1.1.
+
+Weston has been removed the from default installed packages since it is not longer
+required to use the SGX kernel module. Instead you can render directly to
+DRM using libEGL. See https://github.com/verypossible-labs/scenic_driver_egl/blob/main/c_src/main.c
+for a working example. This was guided mostly by the TI fork of kmscube.
+
+* Updated dependencies
+  * [nerves_system_br: bump to v1.13.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.13.2)
+  * [Erlang/OTP 23.1.1](https://erlang.org/download/OTP-23.1.1.README)
+  * [erlinit 1.8.0](https://github.com/nerves-project/erlinit/releases/tag/v1.8.0)
+  * [nerves 1.7.0](https://github.com/nerves-project/nerves/releases/tag/v1.7.0)
+
+* New features
+  * Added support for updating the root filesystem using firmware patches.
+    See the [firmware patch docs](https://hexdocs.pm/nerves/experimental-features.html#content) for more information.
+
 ## v2.7.1
 
 * Updated dependencies
