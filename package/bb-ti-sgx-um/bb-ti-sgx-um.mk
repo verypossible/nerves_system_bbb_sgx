@@ -16,7 +16,7 @@ BB_TI_SGX_UM_TARGET=ti335x
 # ti-sgx-um is a egl/gles provider only if libdrm is installed
 BB_TI_SGX_UM_DEPENDENCIES = libdrm wayland
 
-define TI_SGX_UM_INSTALL_STAGING_CMDS
+define BB_TI_SGX_UM_INSTALL_STAGING_CMDS
 	$(TARGET_MAKE_ENV) $(MAKE) -C $(@D) DISCIMAGE=$(STAGING_DIR) \
 		TARGET_PRODUCT=$(BB_TI_SGX_UM_TARGET) install
 endef
