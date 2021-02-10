@@ -25,8 +25,12 @@ update_kernel_patch() {
   local KERNEL_URL
 
   case $KERNEL_VERSION in
+      5*)
+          RCN_PATCH_URL=http://rcn-ee.net/deb/bullseye-armhf/v$PATCH_VERSION/$ORIGINAL_DIFF_XZ
+          KERNEL_URL=https://www.kernel.org/pub/linux/kernel/v5.x/$KERNEL_TARBALL
+          ;;
       4*)
-          RCN_PATCH_URL=http://rcn-ee.net/deb/buster-armhf/v$PATCH_VERSION/$ORIGINAL_DIFF_XZ
+          RCN_PATCH_URL=http://rcn-ee.net/deb/bullseye-armhf/v$PATCH_VERSION/$ORIGINAL_DIFF_XZ
           KERNEL_URL=https://www.kernel.org/pub/linux/kernel/v4.x/$KERNEL_TARBALL
           ;;
       *)
@@ -55,7 +59,8 @@ update_kernel_patch() {
   git add .
   git commit -q -m "Initial commit"
   git apply ../$ORIGINAL_DIFF
-  rm -fr .git
+  mv .git .git_del
+  rm -fr .git_del
 
   # Now create a regular "diff" patch
   echo "Creating patch..."
@@ -70,20 +75,7 @@ update_kernel_patch() {
   return 0
 }
 
-# NOTE: The -rt vs. no -rt on RCN's site indicates a difference in
-#       the defconfigs. The patches are the same.
-
-#update_kernel_patch 3.8.13-bone79 3.8.13 0001-rcn-linux-kernel-3.8.patch
-#update_kernel_patch 4.1.23-ti-r60 4.1.23 0001-rcn-linux-4.1.23-ti.patch
-#update_kernel_patch 4.4.9-bone10 4.4.9 0001-rcn-linux-4.4.9-bone.patch
-#update_kernel_patch 4.4.9-ti-r25 4.4.9 0001-rcn-linux-4.4.9-ti.patch
-#update_kernel_patch 4.4.113-ti-r147 4.4.113 0001-rcn-linux-4.4.113-ti.patch
-#update_kernel_patch 4.9.58-ti-r72 4.9.58 0001-rcn-linux-4.9.58-ti.patch
-#update_kernel_patch 4.14.69-ti-r75 4.14.69 0001-rcn-linux-4.14.69-ti-r75.patch
-#update_kernel_patch 4.18.9-bone9 4.18.9 0001-rcn-linux-4.18.9-bone9.patch
-#update_kernel_patch 4.19.10-bone14 4.19.10 0001-rcn-linux-4.19.10-bone14.patch
-#update_kernel_patch 4.19.72-bone40 4.19.72 0001-rcn-linux-4.19.72-bone40.patch
-#update_kernel_patch 4.19.103-bone48 4.19.103 0001-rcn-linux-4.19.103-bone48.patch
-update_kernel_patch 4.19.94-ti-r44 4.19.94 0001-rcn-linux-4.19.94-ti-r44.patch
+#update_kernel_patch 4.19.120-bone50 4.19.120 0001-rcn-linux-4.19.120-bone50.patch
+update_kernel_patch 5.4.52-ti-r16 5.4.52 0001-rcn-linux-5.4.52-ti-r16.patch
 
 echo "Updated patches. Now rebuild the linux kernel."
