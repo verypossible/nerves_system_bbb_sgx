@@ -1,0 +1,25 @@
+From eb6d0bc0aa7e0d397c52a817a246f32d044ce3ac Mon Sep 17 00:00:00 2001
+From: Justin Schneck <jschneck@mac.com>
+Date: Wed, 10 Feb 2021 17:18:37 -0500
+Subject: [PATCH] Include armv7 compiler prefix
+
+---
+ eurasia_km/eurasiacon/build/linux2/config/compiler.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/eurasia_km/eurasiacon/build/linux2/config/compiler.mk b/eurasia_km/eurasiacon/build/linux2/config/compiler.mk
+index 1926737..4c31302 100644
+--- a/eurasia_km/eurasiacon/build/linux2/config/compiler.mk
++++ b/eurasia_km/eurasiacon/build/linux2/config/compiler.mk
+@@ -71,7 +71,7 @@ define calculate-compiler-preferred-target
+   ifneq ($$(filter arm-%-gnueabi armv7a-cros-linux-gnueabi armv7hl-redhat-linux-gnueabi,$$($(1)_compiler_preferred_target)),)
+    $(1)_compiler_preferred_target := arm-linux-gnueabi
+   endif
+-  ifneq ($$(filter arm-%-gnueabihf,$$($(1)_compiler_preferred_target)),)
++  ifneq ($$(filter armv7-%-gnueabihf arm-%-gnuabihf,$$($(1)_compiler_preferred_target)),)
+    $(1)_compiler_preferred_target := arm-linux-gnueabihf
+   endif
+ endef
+-- 
+2.25.1
+
